@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['safeadsizeforadsize_3a',['safeAdSizeForAdSize:',['../interface_g_a_d_u_plugin_util.html#a8ed7bd5d0b25559a9e62e7b46ae39742',1,'GADUPluginUtil']]],
+  ['setactive',['setActive',['../class_music_behaviour.html#a004893627aac97d3546d17a4d5da3fab',1,'MusicBehaviour']]],
+  ['setactiveboxspawner',['setActiveBoxSpawner',['../classgame_behaviour.html#af479da973fe068feb94b0b357876b079',1,'gameBehaviour']]],
+  ['setadposition_3a',['setAdPosition:',['../interface_g_a_d_u_banner.html#af2d82f5d2e4d3ee98131a1380f9c543f',1,'GADUBanner']]],
+  ['setanimation',['setAnimation',['../classplayer_behaviour.html#ad1738b09726dccc7c9f30f7e18e1ca1f',1,'playerBehaviour']]],
+  ['setbirthdaywithmonth_3aday_3ayear_3a',['setBirthdayWithMonth:day:year:',['../interface_g_a_d_u_request.html#a659127850e6f7d00a6befd4a8a3a6fa8',1,'GADURequest']]],
+  ['setcustomadposition_3a',['setCustomAdPosition:',['../interface_g_a_d_u_banner.html#afde058e40e07b979539cad66479ecb87',1,'GADUBanner']]],
+  ['setdirection',['setDirection',['../classplayer_behaviour.html#a11c2a8431538b86c30068987ba89e735',1,'playerBehaviour']]],
+  ['setextrawithkey_3avalue_3a',['setExtraWithKey:value:',['../interface_g_a_d_u_request.html#a646d9718a15c14cd88bf488c24dbddf9',1,'GADURequest']]],
+  ['setgenderwithcode_3a',['setGenderWithCode:',['../interface_g_a_d_u_request.html#a275f16fb3f7471ba12ccfcc1f876b763',1,'GADURequest']]],
+  ['settransition',['SetTransition',['../classgame_behaviour.html#ae3bfa44ebec039eadb29048e7e552af5',1,'gameBehaviour.SetTransition()'],['../classplayer_behaviour.html#a07d436a3c87cf03429a0ae252abb9eed',1,'playerBehaviour.SetTransition()']]],
+  ['show',['show',['../interface_g_a_d_u_interstitial.html#a0542b0a9af929bf985a67bad6362f38f',1,'GADUInterstitial::show()'],['../interface_g_a_d_u_reward_based_video_ad.html#a36f262f2fda559cc3012c4fa7b6fcdc7',1,'GADURewardBasedVideoAd::show()']]],
+  ['showbanner',['ShowBanner',['../class_admob_manager.html#ae49fcd61351e4a07d85a9fb7f23a8c18',1,'AdmobManager']]],
+  ['showbannerview',['showBannerView',['../interface_g_a_d_u_banner.html#a7e61569c17f398a5975b07ea6e2b61cb',1,'GADUBanner']]],
+  ['showinterstitial',['ShowInterstitial',['../class_admob_manager.html#a4ccfcbad96c36d68478b6fb82d74294f',1,'AdmobManager']]],
+  ['showselected',['showSelected',['../classground_behaviour.html#ac9e611079ceb520ee3ee3db3c9a9d1cd',1,'groundBehaviour']]],
+  ['spawnbox',['spawnBox',['../classgame_behaviour.html#aaf86d7ac8e0c31e7059ca70e31bdbfb4',1,'gameBehaviour']]],
+  ['start',['Start',['../classgame__core_1_1_touch_behaviour.html#a3bef06fe7e90cf87e44bac25a696c395',1,'game_core::TouchBehaviour']]],
+  ['stringforkey_3a',['stringForKey:',['../interface_g_a_d_u_native_custom_template_ad.html#a74fb72d60f3a583b011eba4273f99395',1,'GADUNativeCustomTemplateAd']]]
+];
