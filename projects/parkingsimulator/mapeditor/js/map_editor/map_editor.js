@@ -276,7 +276,7 @@ function(event)
 		}
 	}).done(
 	function(data){
-		onLoadDone(data,"./img/sidewalks/","#sprites_sidewalks",30);
+		onLoadDoneHtml(data,"./img/sidewalks/","#sprites_sidewalks",30);
 	}
 	);
 
@@ -287,7 +287,7 @@ function(event)
 		}
 	}).done(
 	function(data){
-		onLoadDone(data,"./img/road_surface/","#sprites_road_surface",10);
+		onLoadDoneHtml(data,"./img/road_surface/","#sprites_road_surface",10);
 	}
 	);
 	$.ajax({
@@ -297,7 +297,7 @@ function(event)
 		}
 	}).done(
 	function(data){
-		onLoadDone(data,"./img/parking_slots/","#sprites_parking_slots",20);
+		onLoadDoneHtml(data,"./img/parking_slots/","#sprites_parking_slots",20);
 	}
 	);
 	
@@ -309,7 +309,7 @@ function(event)
 		}
 	}).done(
 	function(data){
-		onLoadDone(data,"./img/sewer_caps/","#sprites_sewer",40);
+		onLoadDoneHtml(data,"./img/sewer_caps/","#sprites_sewer",40);
 	}
 	);
 	
@@ -320,7 +320,7 @@ function(event)
 		}
 	}).done(
 	function(data){
-		onLoadDone(data,"./img/vegetation/","#sprites_vegetation",50);
+		onLoadDoneHtml(data,"./img/vegetation/","#sprites_vegetation",50);
 	}
 	);
 		
@@ -542,15 +542,98 @@ function refreshPage(){
 *src:https://forums.adobe.com/thread/2144429
 *src:https://stackoverflow.com/questions/18480550/how-to-load-all-the-images-from-one-of-my-folder-into-my-web-page-using-jquery
 */
+function onLoadDoneHtml(data, folderName, menuID, zindex)
+{
+	console.log("***DROGA***"+folderName+"***");
+	var lines= new Array();//data.split("\n");
+	 $(data).find("td > a").each(function(){
+		 if($(this).attr("href").search('.png') > 0 && !($(this).attr("href").search('light')>0))
+		 {
+			lines.push($(this).attr("href"));
+		 }
+         });
+	for(var i=0;i<lines.length;i++)
+	{
+			var fileName=lines[i];
+			var elementName=fileName.split('.')[0];
+			var elementID="clone_"+elementName;
+			var fileLink=folderName+fileName;
+			
+			console.log(fileLink);
+			var newButton=$('<button class="btn btn-link add_new_element text-white" style="text-decoration:none;"  value="'+elementID+'" ><img src="'+fileLink+'" width="32" id="'+elementID+'_img"/></button>');
+			var newImageElement  = $('#clone_me').clone();
+			newImageElement.attr("name",elementName);
+			newImageElement.attr("id",elementID);
+			newImageElement.attr("xlink:href",fileLink);
+			newImageElement.attr("tabindex",zindex);
+			
+			$(newButton).click(
+				function(event)
+				{
+					//ADD NEW ELEMENT
+					var elementName  = "#"+$(this).val();
+				    var elementImage = new Image();
+					var elementImageName =$("#"+$(this).val()+"_img");
+					var newElement   = $(elementName).clone();
+					elementImage.src=elementImageName.attr("src");
+					console.log(elementImageName.attr("src")+"-"+elementImage.naturalWidth);
+					$(newElement).attr("x",0);
+					$(newElement).attr("y",0);
+					$(newElement).attr("id","");
+					$(newElement).attr("width",elementImage.naturalWidth);
+					$(newElement).attr("height",elementImage.naturalHeight);
+					
+					$("#map_content").append(newElement);
+					refreshMapContent();
+					addEventsToMapElements();
+					addEventsToRasterSquares();
+				}
+			);
+			
+			$(newButton).on('dragstart', 
+				function(event) 
+				{
+					var elementName = "#"+$(this).val();
+					var newElement  = $(elementName).clone();
+					var elementImage = new Image();	
+					var elementImageName =$("#"+$(this).val()+"_img");					
+					elementImage.src=elementImageName.attr("src");
+					console.log(elementImageName.attr("src")+"-"+elementImage.naturalWidth);
+					$(newElement).attr("x",0);
+					$(newElement).attr("y",0);
+					$(newElement).attr("id","_dragged_");
+					$(newElement).attr("width",elementImage.naturalWidth);
+					$(newElement).attr("height",elementImage.naturalHeight);
+					$("#map_content").append(newElement);
+					refreshMapContent();
+					addEventsToMapElements();
+					addEventsToRasterSquares();
+					offset={x:0,y:0};
+					selected.target=$('#_dragged_');
+					$(selected.target).attr("id","");
+					selected.draggedFromNav=true;
+				
+				}
+			);
+			
+			$("defs").first().append(newImageElement);
+			$(menuID).append(newButton);
+		
+	}
+}
+/**
+* PLAIN TEXT
+*/
 function onLoadDone(data, folderName, menuID, zindex)
 {
 	var lines= data.split("\n");
+	
 	for(var i=0;i<lines.length;i++)
 	{
 		if(lines[i].search('.png')>0 && !(lines[i].search('light')>0))
 		{
-			console.log(lines[i]);
-			console.log(lines[i].split(" ")[1]);
+			//console.log("*START*"+lines[i]+"*END*");
+			//console.log(lines[i].split(" ")[1]);
 			
 			var fileName=lines[i].split(" ")[1];
 			var elementName=fileName.split('.')[0];

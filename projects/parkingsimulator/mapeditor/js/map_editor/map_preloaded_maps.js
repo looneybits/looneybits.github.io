@@ -11,7 +11,7 @@ function(event)
 		}
 	}).done(
 	function(data){
-		onMapsReceived(data,"./img/maps/","#preloaded_maps");
+		onMapsReceivedHtml(data,"./img/maps/","#preloaded_maps");
 		
 
 	}
@@ -69,6 +69,54 @@ function onMapsReceived(data, folderName, menuID)
 			$(menuID).append(newButton);
 			
 		}
+	}
+}
+
+/**
+*
+*/
+function onMapsReceivedHtml(data, folderName, menuID)
+{
+	console.log("***DROGA***"+folderName+"***");
+	var lines= new Array();//data.split("\n");
+	 $(data).find("td > a").each(function(){
+		 if($(this).attr("href").search('.svg') > 0)
+		 {
+			lines.push($(this).attr("href"));
+		 }
+         });
+	for(var i=0;i<lines.length;i++)
+	{
+			var fileName=lines[i];
+			var elementName=fileName.split('.')[0];
+			var elementID=elementName;
+			var fileLink=folderName+fileName;
+			var newButton=$('<button class="btn btn-link add_new_element text-white" style="text-decoration:none;"  value="'+elementID+'" data-url="'+fileLink+'"><i class="fa fa-fw fa-map-pin"></i> '+elementName+'</button>');
+			console.log(elementName);
+			
+			
+			$(newButton).click(
+				function(event)
+				{
+					var dataURL= $(this).data('url');
+					$.ajax({
+					url: dataURL, 
+					beforeSend: function( xhr ) {
+						xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+					}
+				}).done(
+					function(data){
+						var checkstr =  confirm('Are you sure you want to load a new map?');
+						if(checkstr == true){
+							// do your code
+							loadNewMap(data);
+							refreshMapContent();
+							addEventsToMapElements();
+							addEventsToRasterSquares();
+						}
+					});	
+				});
+			$(menuID).append(newButton);
 	}
 }
 /**
