@@ -144,14 +144,13 @@ function(event)
 $( "image" ).mousedown(
 function( event ) 
 {
-	console.log("AQUI SI QUE ENTRA");
 	if(!$(selected.target).is(event.target))
 	{
-		console.log("OuterWidth "+$("#map").outerWidth()+" Offset "+ ($("#map").outerWidth()/2048) );
+		/*console.log("OuterWidth "+$("#map").outerWidth()+" Offset "+ ($("#map").outerWidth()/2048) );
 		console.log("OuterWidth "+$("#map").outerHeight()+" Offset "+ ($("#map").outerHeight()/1536) );
 		console.log("Position "+ $("#map").position().left );
 		console.log("OffsetX "+($("#map").position().left-event.clientX));
-		console.log("extremeX"+ ( $("#map").position().left+$("#map").outerWidth()))
+		console.log("extremeX"+ ( $("#map").position().left+$("#map").outerWidth()))*/
 	  offset.x =$(this).position().left - event.clientX;//(parseFloat( $(this).attr( 'x' ) ))- event.clientX;
 	  offset.y =$(this).position().top  - event.clientY;//(parseFloat( $(this).attr( 'y' ) ))- event.clientY;
 	  $( "#label_mousedown_elem_posx" ).text( "Offset coordinates (x,y) : " + offset.x+","+offset.y);
@@ -185,7 +184,6 @@ $(document).bind( "mousemove", function( event ){
 	if(rasterMode && !selected.draggedFromNav){return;}
 	if(selected.target!=null)
 	{
-		console.log("Entro "+$(selected.target).attr('name'));
 		 var top  = window.pageYOffset || document.documentElement.scrollTop,
   left = window.pageXOffset || document.documentElement.scrollLeft;
   var scrollOffset=top-initialScroll;
@@ -357,11 +355,11 @@ function( event )
 		case 1: //LEFT
 		if(!$(selected.target).is(event.target))
 	{
-		console.log("OuterWidth "+$("#map").outerWidth()+" Offset "+ ($("#map").outerWidth()/2048) );
+		/*console.log("OuterWidth "+$("#map").outerWidth()+" Offset "+ ($("#map").outerWidth()/2048) );
 		console.log("OuterWidth "+$("#map").outerHeight()+" Offset "+ ($("#map").outerHeight()/1536) );
 		console.log("Position "+ $("#map").position().left );
 		console.log("OffsetX "+($("#map").position().left-event.clientX));
-		console.log("extremeX"+ ( $("#map").position().left+$("#map").outerWidth()))
+		console.log("extremeX"+ ( $("#map").position().left+$("#map").outerWidth()))*/
 	  offset.x =$(this).position().left - event.clientX;//(parseFloat( $(this).attr( 'x' ) ))- event.clientX;
 	  offset.y =$(this).position().top  - event.clientY;//(parseFloat( $(this).attr( 'y' ) ))- event.clientY;
 	  $( "#label_mousedown_elem_posx" ).text( "Offset coordinates (x,y) : " + offset.x+","+offset.y);
@@ -461,7 +459,7 @@ $('.add_new_element').click(
 		var elementImageName =$("#"+$(this).val()+"_img");
 		var newElement   = $(elementName).clone();
 		elementImage.src=elementImageName.attr("src");
-		console.log(elementImageName.attr("src")+"-"+elementImage.naturalWidth);
+		//console.log(elementImageName.attr("src")+"-"+elementImage.naturalWidth);
 		$(newElement).attr("x",0);
 		$(newElement).attr("y",0);
 		$(newElement).attr("id","");
@@ -483,7 +481,7 @@ $('.add_new_element').on('dragstart',
 		var elementImage = new Image();	
 		var elementImageName =$("#"+$(this).val()+"_img");					
 		elementImage.src=elementImageName.attr("src");
-		console.log(elementImageName.attr("src")+"-"+elementImage.naturalWidth);
+		//console.log(elementImageName.attr("src")+"-"+elementImage.naturalWidth);
 		$(newElement).attr("x",0);
 		$(newElement).attr("y",0);
 		$(newElement).attr("id","_dragged_");
